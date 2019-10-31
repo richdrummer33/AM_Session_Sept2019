@@ -464,12 +464,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1831761794}
   m_PrefabAsset: {fileID: 0}
---- !u!120 &544216132 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 6860023320135496062, guid: 212264e7c60e33c4d98c4801e537daae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1831761794}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550933760
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,12 +681,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 553830674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b868299e4969944a0ff25930bd2033, type: 3}
+  m_Script: {fileID: 11500000, guid: 7faf0e2ee743fd143bb8a2cb915021a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackpadAxisX: Left Trackpad X
+  trackpadAxisY: Left Trackpad Y
   xrRig: {fileID: 512925609}
-  line: {fileID: 544216132}
-  teleportButtonName: Left Menu Button
 --- !u!1 &1001153126
 GameObject:
   m_ObjectHideFlags: 0
