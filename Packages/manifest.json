@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.ptc.vuforia.engine": "8.5.8",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "2.0.8",
@@ -15,7 +14,9 @@
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.timeline": "1.1.0",
     "com.unity.ugui": "1.0.0",
+    "com.unity.xr.arcore": "2.0.2",
     "com.unity.xr.arfoundation": "2.1.4",
+    "com.unity.xr.arkit": "2.0.1",
     "com.unity.xr.openvr.standalone": "1.0.5",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
