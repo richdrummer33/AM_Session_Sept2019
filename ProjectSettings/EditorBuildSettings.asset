@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ArFoundation_BasePlaneDetection.unity
-    guid: 5feb947da9d907e42ab4365e984906dd
+    path: Assets/Scenes/ArFoundation_Ruler.unity
+    guid: f09bba124abef4d47b25ee2334085773
   m_configObjects: {}
