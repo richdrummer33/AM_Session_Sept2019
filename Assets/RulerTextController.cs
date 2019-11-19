@@ -6,18 +6,13 @@ using TMPro;
 /// <summary>
 /// Place the text object in center of the ruler, and make it face the player
 /// </summary>
+[ExecuteInEditMode]
 public class RulerTextController : MonoBehaviour
 {
     public LineRenderer rulerLine; // Need reference to line renderer - need to center (position) this text on the ruler
 
-    private TextMeshPro rulerText; // Update text with measurement (distance) info
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rulerText = GetComponentInChildren<TextMeshPro>(); // Automatically "Gets" the TextMeshPro compoenent attached to this game object - can also write it this way: "this.gameObject.GetComponent<TextMeshPro>()"
-    }
-
+    public TextMeshPro rulerText; // Update text with measurement (distance) info
+    
     // Update is called once per frame
     void Update()
     {

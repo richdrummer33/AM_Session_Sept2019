@@ -8,7 +8,7 @@ public class ArCanvasInstructionsController : MonoBehaviour
 
     int currentStep = 0; // Record of what step we're on
 
-    public GameObject taskSelectionCanvas;
+    public GameObject taskSelectionCanvas; // So we can enable/disable it
 
     public void OnEnable() // This is called automatically when this gameobject is enabled (Monobehavior funciton)
     {
@@ -32,12 +32,11 @@ public class ArCanvasInstructionsController : MonoBehaviour
         }
         else // Reset app to main menu (task selection canvas)
         {
-            // *************** COVER THIS *************************
-            taskSelectionCanvas.SetActive(true); // COVER THIS *************************
+            taskSelectionCanvas.SetActive(true); // Allow user to select a new set of tasks to step through - we're done with these!
 
-            currentStep = 0; // reset!
+            currentStep = 0; // Just in case!
 
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // We're done with these steps, so disable
         }
     }
 }
