@@ -9,6 +9,8 @@ public class SimHandGrab : MonoBehaviour
 
     public Animator m_animator; // This is a reference to the animator component on the sim hand
 
+    FixedJoint grabJoint; // Joint btwn hand and held object
+
     private void OnTriggerStay(Collider other)
     {
         if(other.GetComponent<Rigidbody>())
@@ -49,14 +51,20 @@ public class SimHandGrab : MonoBehaviour
     void Grab()
     {
         m_HeldObject = m_CollidingObject;
-        m_HeldObject.GetComponent<Rigidbody>().isKinematic = true;
-        m_HeldObject.transform.SetParent(transform);
+
+        grabJoint = gameObject.AddComponent<FixedJoint>(); // Create the joint component on the hand
+
+        grabJoint.connectedBody = m_HeldObject.GetComponent<Rigidbody>(); // Define connected body (held obj)
+
+        grabJoint.breakForce = 1000f; // Amt force reqrd to break the joint (obj falls to ground on break)
+
+        grabJoint.breakTorque = 1000f;
     }
 
     void Release()
     {
-        m_HeldObject.transform.SetParent(null);
-        m_HeldObject.GetComponent<Rigidbody>().isKinematic = false;
+        Destroy(grabJoint); // Drop object!
+
         m_HeldObject = null;
     }
 }

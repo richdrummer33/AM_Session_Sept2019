@@ -9,16 +9,22 @@ public class BasicButtonController : MonoBehaviour
 
     public Transform button; // The renderer for the button (which will move)
 
-    Vector3 startPosition; 
+    Vector3 startPosition;
+
+    AudioSource source; // AudioSouce connected to this gameobject
     
     void Start()
     {
         startPosition = button.position; // Take note of the button posn @ game start (before pressed!)
+
+        source = GetComponent<AudioSource>(); // Get the source attached to this game object
     }
 
     private void OnTriggerEnter(Collider other) // Button was touched!
     {
         button.position = pressedPosition.position; // Move button to pressed (closed) position! 
+
+        source.Play(); // Play a sound
     }
 
     private void OnTriggerExit(Collider other)
