@@ -24,7 +24,7 @@ public class SimHandGrab : MonoBehaviour
         m_CollidingObject = null;
     }
 
-
+    public GameObject prefab;
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +45,11 @@ public class SimHandGrab : MonoBehaviour
             {
                 Release();
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Instantiate(prefab, transform.position + transform.up * 0.5f, Quaternion.identity);
         }
     }
 
