@@ -11,6 +11,17 @@ public class SimHandGrab : MonoBehaviour
 
     FixedJoint grabJoint; // Joint btwn hand and held object
 
+    Material myMat;
+
+    public Texture myTexture;
+
+    private void Start()
+    {
+        myMat = GetComponent<Material>();
+
+        myMat.SetTexture("_MainTex", myTexture);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.GetComponent<Rigidbody>())
@@ -49,7 +60,31 @@ public class SimHandGrab : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Instantiate(prefab, transform.position + transform.up * 0.5f, Quaternion.identity);
+            if (m_HeldObject)
+            {
+                m_HeldObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
+
+                InteractableObject interactable = m_HeldObject.GetComponent<InteractableObject>(); // Attempts to get InteractableObject from held object
+
+                if (interactable != null)
+                {
+                    interactable.Interact(); // Runs the overriden Interact() function on the object we are holding. Replaces sendmessage function
+                }
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (m_HeldObject)
+            {
+                // m_HeldObject.SendMessage("StopInteract", SendMessageOptions.DontRequireReceiver);
+
+                InteractableObject interactable = m_HeldObject.GetComponent<InteractableObject>(); // Attempts to get InteractableObject from held object
+
+                if (interactable != null)
+                {
+                    interactable.StopInteract(); // Runs the overriden Interact() function on the object we are holding. Replaces sendmessage function
+                }
+            }
         }
     }
 

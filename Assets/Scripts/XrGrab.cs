@@ -65,7 +65,14 @@ public class XrGrab : MonoBehaviour
             // Code to interact - paint or shoot paintball gun or start the electric drill
             if (m_HeldObject != null) // First check we holding obj to interact with
             {
-                m_HeldObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver); // Attempt interact - if held obj has function with name "Interact", it will run
+                // m_HeldObject.SendMessage("Interact", SendMessageOptions.DontRequireReceiver); // Attempt interact - if held obj has function with name "Interact", it will run
+
+                InteractableObject interactable = m_HeldObject.GetComponent<InteractableObject>(); // Attempts to get InteractableObject from held object
+
+                if(interactable != null)
+                {
+                    interactable.Interact(); // Runs the overriden Interact() function on the object we are holding. Replaces sendmessage function
+                }
             }
 
             triggerPulled = true; // PRevent repeated interact while holding trigger
@@ -75,7 +82,14 @@ public class XrGrab : MonoBehaviour
             // Attempt stop interact
             if(m_HeldObject != null)
             {
-                m_HeldObject.SendMessage("StopInteract", SendMessageOptions.DontRequireReceiver); // Attempt interact - if held obj has function with name "StopInteract", it will run
+                // m_HeldObject.SendMessage("StopInteract", SendMessageOptions.DontRequireReceiver); // Attempt interact - if held obj has function with name "StopInteract", it will run
+
+                InteractableObject interactable = m_HeldObject.GetComponent<InteractableObject>();
+
+                if(interactable != null) // In fact this is an interactable object
+                {
+                    interactable.StopInteract(); // Runs the overriden StopInteract() function on the object we are holding. Replaces sendmessage function
+                }
             }
 
             triggerPulled = false; 

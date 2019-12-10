@@ -8,6 +8,8 @@ public class CubeDestroyer : MonoBehaviour
     {
         GameManager.instance.ObjectDestroyed(other.gameObject); // Tally up the objects that contact this collider - take score using the Game Manager
 
-        Destroy(other.gameObject);
+        // Destroy(other.gameObject);
+
+        other.GetComponent<MeshRenderer>().enabled = false; // Make invisible instead of destroying!
     }
 }

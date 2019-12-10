@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractablePaintbrush : MonoBehaviour
+public class InteractablePaintbrush : InteractableObject
 {
     public GameObject paintTrailPrefab; // Paint trail prefab will instantiate when we pull the trigger! Paint will follow the brush tip
 
@@ -10,8 +10,10 @@ public class InteractablePaintbrush : MonoBehaviour
 
     private Material paintMaterial; // This is the material that we will paint wheh trigger pulled
 
-    private void Interact() // This function will be called by XR grab when trigger pulled
+    public override void Interact() // This function will be called by XR grab when trigger pulled
     {
+        base.Interact(); // Runs the interact function in the base class (i.e. InteractableObject.Interact())
+
         if (paintMaterial != null) // Check has paint before painting
         {
             currentPaintTrail = Instantiate(paintTrailPrefab, transform.position, transform.rotation, transform); // Create paint trail that follows the brush!
@@ -19,8 +21,10 @@ public class InteractablePaintbrush : MonoBehaviour
         }
     }
 
-    private void StopInteract() // When release trigger, stop painting - unparent paint! This function will be called by XR grab when trigger release
+    public override void StopInteract() // When release trigger, stop painting - unparent paint! This function will be called by XR grab when trigger release
     {
+        base.Interact(); // Runs the interact function in the base class (i.e. InteractableObject.StopInteract())
+
         currentPaintTrail.transform.SetParent(null); // Unparent - stop following brush (stops painting)
     }        
 

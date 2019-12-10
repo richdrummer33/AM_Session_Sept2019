@@ -27,6 +27,10 @@ public class ExplodeAllBoxes : MonoBehaviour
 
             Debug.Log("Cube " + cubesToDestroy[i].name + " has been launched");
         }
+
+        GameManager.instance.timeRemaining = 30f; // Reset the countdown timer
+
+        // Other code to perform various other actions
     }
 
     // Start is called before the first frame update

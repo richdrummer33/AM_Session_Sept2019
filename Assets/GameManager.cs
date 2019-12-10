@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
 
     public float timeRemaining = 30; // number of seconds remaining
 
+    public BasicButtonController resetGameButton;
+
     void Start()
     {
         instance = this;
 
         numObjectsToWin = cubesToDestroy.Count; // Number of cubes in the list
+
+        resetGameButton.OnButtonPush += ResetTimer; // Subscribe the ResetTimer function to my delegate
     }
 
     void Update()
@@ -53,5 +57,10 @@ public class GameManager : MonoBehaviour
         {
             numObjectsDestroyed = numObjectsDestroyed + 1; // Increment the count
         }
+    }
+
+    public void ResetTimer()
+    {
+        timeRemaining = 30f;
     }
 }

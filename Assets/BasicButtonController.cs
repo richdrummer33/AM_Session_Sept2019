@@ -12,7 +12,13 @@ public class BasicButtonController : MonoBehaviour
     Vector3 startPosition;
 
     AudioSource source; // AudioSouce connected to this gameobject
-    
+
+    public delegate void ButtonPushEvent(); // Defining the delegate (not* an instance)
+    public ButtonPushEvent OnButtonPush; // Creating a instance of the delegate
+
+    // Other scripts can "subscribe" functions to the OnButtonPush delegate
+    // When OnButtonPush() is called, all functions that are "subscribed" to OnButtonPush, will be run
+
     void Start()
     {
         startPosition = button.position; // Take note of the button posn @ game start (before pressed!)
@@ -25,6 +31,8 @@ public class BasicButtonController : MonoBehaviour
         button.position = pressedPosition.position; // Move button to pressed (closed) position! 
 
         source.Play(); // Play a sound
+
+        OnButtonPush(); // Runs all functions subscribed to this button
     }
 
     private void OnTriggerExit(Collider other)
